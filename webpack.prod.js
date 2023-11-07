@@ -5,7 +5,7 @@ module.exports = {
   mode: 'production',
   entry: {
     index: './src/index.js',
-    styles: './src/styles.scss'
+    styles: './src/styles.css'
   },
   output: {
     filename: '[name].js',
@@ -18,8 +18,8 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.ts$/, exclude: /node_modules/, use: 'ts-loader' },
       {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
@@ -34,6 +34,6 @@ module.exports = {
       '@services': path.resolve(__dirname, 'src/services/'),
       '@components': path.resolve(__dirname, 'src/components/')
     },
-    extensions: ['.ts', '.js', '.json', '.scss']
+    extensions: ['.ts', '.js', '.json', '.css']
   }
 }

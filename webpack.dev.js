@@ -15,7 +15,7 @@ module.exports = {
       { test: /\.ts$/, exclude: /node_modules/, use: 'ts-loader' },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       }
     ]
   },
@@ -25,7 +25,7 @@ module.exports = {
       '@services': path.resolve(__dirname, 'src/services/'),
       '@components': path.resolve(__dirname, 'src/components/')
     },
-    extensions: ['.ts', '.js', '.json', '.scss']
+    extensions: ['.ts', '.js', '.json']
   },
   devtool: 'inline-source-map',
   devServer: {
