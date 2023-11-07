@@ -1,7 +1,7 @@
 import { render } from 'react-dom'
 import Board from '../src'
 import getUrlParams from './services/getUrlParams'
-import '../src/styles.scss'
+import '../src/styles.css'
 
 const board = {
   columns: [
