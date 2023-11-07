@@ -1,3 +1,3 @@
 export { default } from './components/Board'
 export * from './services/helpers'
-import '../styles.css'
+import '../src/styles.css'
