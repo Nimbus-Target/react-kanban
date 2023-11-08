@@ -25,7 +25,7 @@ function Column({
   const listRef = useRef(null);
 
   const [loading, setLoading] = useState(false);
-  const [items, setItems] = useState(children.initialList);
+  // const [items, setItems] = useState(children.initialList);
 
 /*   useEffect(() => {
     setItems(children.load(children.id, items.length));
@@ -33,9 +33,9 @@ function Column({
 
   let handleEndScroll = () => {
     console.log('end column', children.id);
-    let aux = JSON.parse(JSON.stringify(items));
-    console.log('load more', items.length);
-    aux = [...aux, ...children.loadMode(children.id, items.length)];
+    let aux = JSON.parse(JSON.stringify(children.cards));
+    console.log('load more', children.cards.length);
+    aux = [...aux, ...children.loadMode(children.id, children.cards.length)];
     setItems(aux);
   };
 
@@ -82,9 +82,9 @@ function Column({
             <div {...columnProvided.dragHandleProps}>{renderColumnHeader(children)}</div>
             {allowAddCard && <CardAdder column={children} onConfirm={onCardNew} />}
             <DroppableColumn droppableId={String(children.id)}>
-              {items.length ? (
+              {children.cards.length ? (
                 <>
-                  {items.map((card, index) => (
+                  {children.cards.map((card, index) => (
                     <Card
                       key={card.id}
                       index={index}
@@ -95,8 +95,8 @@ function Column({
                     </Card>
                   ))}
                   <div>
-                    <div>Listando {items.length}</div>
-                    <button onClick={() => handleEndScroll(children, columnIndex)}>Carregar mais</button>
+                    <div>Listando {children.cards.length}</div>
+                    <button onClick={() => children.loadMore(children.id, children.cards.length)}>Carregar mais</button>
                   </div>
                 </>
               ) : (
