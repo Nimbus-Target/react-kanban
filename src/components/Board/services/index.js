@@ -20,7 +20,8 @@ function isAColumnMove(type) {
 
 function getCard(board, sourceCoordinate) {
   const column = board.columns.find((column) => column.id === sourceCoordinate.fromColumnId)
-  return column.cards[sourceCoordinate.fromPosition]
+  console.log({column});
+  // return column.cards[sourceCoordinate.fromPosition]
 }
 
 function getColumn(board, droppableId) {

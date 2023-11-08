@@ -174,7 +174,7 @@ function ControlledBoard({
 
   return (
     <BoardContainer
-      onCardDragEnd={handleOnCardDragEnd}
+      onCardDragEnd={onCardDragEnd}
       onColumnDragEnd={handleOnColumnDragEnd}
       renderColumnAdder={() => {
         if (!allowAddColumn) return null
@@ -214,20 +214,14 @@ function BoardContainer({
   onColumnRemove,
   allowRenameColumn,
   onColumnRename,
-  onColumnDragEnd,
   onCardDragEnd,
   onCardNew,
   allowAddCard,
 }) {
   function handleOnDragEnd(event) {
     const coordinates = getCoordinates(event, board)
-    if (!coordinates.source) return
-
-    isAColumnMove(event.type)
-      ? isMovingAColumnToAnotherPosition(coordinates) &&
-        onColumnDragEnd({ ...coordinates, subject: board.columns[coordinates.source.fromPosition] })
-      : isMovingACardToAnotherPosition(coordinates) &&
-        onCardDragEnd({ ...coordinates, subject: getCard(board, coordinates.source) })
+    if (!event.draggableId || !coordinates.source || !coordinates.destination) return
+    onCardDragEnd(event.draggableId, coordinates);
   }
 
   return (
