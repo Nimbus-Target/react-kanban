@@ -95,8 +95,7 @@ function Column({
                     </Card>
                   ))}
                   <div>
-                    <div>Listando {children.cards.length}</div>
-                    <button onClick={() => children.loadMore(children.id, children.cards.length)}>Carregar mais</button>
+                    <button className='load-more-button' onClick={() => children.loadMore(children.id, children.cards.length)}>Carregar mais</button>
                   </div>
                 </>
               ) : (
