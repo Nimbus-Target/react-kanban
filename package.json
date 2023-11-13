@@ -46,7 +46,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "scripts": {
-    "prepublish": "export NODE_OPTIONS=--openssl-legacy-provider && rm -rf dist/ && NODE_ENV=production webpack --config webpack.prod.js",
+    "prepublish": "rm -rf dist/ && NODE_ENV=production webpack --config webpack.prod.js",
     "prepare": "rm -rf dist/ && NODE_ENV=production webpack --config webpack.prod.js",
     "server": "webpack-dev-server --config webpack.dev.js",
     "test": "jest",
